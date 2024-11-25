@@ -1,0 +1,87 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSK Cost Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="calculator-container">
+    <h1>MSK Cost Calculator</h1>
+    <div class="calculator-content">
+
+      <div id="calculation-part">
+        <label for="employees"></label>
+
+        <p class="info-text">Enter the total number of employees in your organization:</p></br>
+
+        <input type="number" 
+              id="employees" 
+              placeholder="e.g., 500">
+        <button onclick="calculateCost()">Calculate</button>
+
+        <div id="result">
+          <h3>Estimated Cost Impact:</h3>
+          <p id="totalCost">Annual cost on MSK conditions: £<span>0</span></p>
+          <p id="savings">Potential savings: £<span>0</span></p>
+        </div>
+
+      </div>
+
+      <div id="calculation-basis">     
+          <h3>Calculation Basis:</h3>
+          <p>
+            Average Salary: <span id="salary-info">£34,963</span>
+            <span class="info-icon" 
+                  role="tooltip" 
+                  data-tooltip="Median annual earnings for full-time employees was £34,963 for the tax year ending on 5 April 2023" 
+                  data-tooltip-link="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/annualsurveyofhoursandearnings/2023">
+                  <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <p>
+            Average Absence Rate: <span id="absenceRate-info">2.6%</span>
+            <span class="info-icon" 
+                  role="tooltip" 
+                  data-tooltip="The sickness absence rate - the percentage of working hours lost because of sickness or injury rose to 2.6% in 2022"
+                  data-tooltip-link="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/sicknessabsenceinthelabourmarket/2022">
+                  <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <p>
+            Working Days Lost due to MSK: <span id="mskRate-info">21%</span>
+            <span class="info-icon" 
+                  role="tooltip" 
+                  data-tooltip="In 2022/23, musculoskeletal disorders accounted for 27% of all work-related ill health cases and 21% of all working days lost due to work-related ill health."
+                  data-tooltip-link="https://www.hse.gov.uk/statistics/assets/docs/msd.pdf">
+                  <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <p>
+            Cost per Employee: <span id="costPerEmployee-info">£226</span>
+            <span class="info-icon" 
+                  role="tooltip" 
+                  data-tooltip="3% minimum employer contribution." 
+                  data-tooltip-link="https://www.thepensionsregulator.gov.uk/en/employers/new-employers/im-an-employer-who-has-to-provide-a-pension/choose-a-pension-scheme/understanding-your-costs/making-contributions-to-your-pension-scheme-?gad_source=1&gclid=CjwKCAjwnei0BhB-EiwAA2xuBtCjcDDOAN4ZywqYsJ4xrTove1K-s4XjYSh0hf2lF793qP85ooxGdRoCtCMQAvD_BwE&gclsrc=aw.ds">
+                  <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <p>
+            Absence Reduced by: <span id="absenceReducedBy-info">20%</span>
+            <span class="info-icon" 
+                  role="tooltip" 
+                  data-tooltip="Evidence of impact - due to early self help and clinical intervention if required" 
+                  data-tooltip-link="https://www.researchgate.net/publication/260843454_Acute_low_back_pain_Beyond_drug_therapies">
+                  <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+      </div>
+    </div>  
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
