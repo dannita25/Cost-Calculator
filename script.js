@@ -1,9 +1,10 @@
-// Predefined values for calculation (to be managed by admin staff)
-let averageSalary = 34963; // Updateable by admin
-let averageAbsenceRate = 2.6 / 100; // Updateable by admin
-let mskRate = 21 / 100; // Updateable by admin
-let reductionRate = 20 / 100; // Updateable by admin
+// Predefined values for calculation (adaptable by admin staff)
+let averageSalary = 34963; 
+let averageAbsenceRate = 2.6 / 100; 
+let mskRate = 21 / 100; 
+let reductionRate = 20 / 100; 
 let niMultiplier = 1.15; // Updated NI multiplier
+let employersPensionContribution = 1.03;
 
 function calculateCost() {
   const employees = parseFloat(document.getElementById('employees').value);
@@ -15,15 +16,14 @@ function calculateCost() {
   }
 
   // Calculate annual MSK cost
-  const annualMSKCost = employees * averageSalary * averageAbsenceRate * mskRate * niMultiplier;
+  const annualMSKCost = employees * averageSalary * averageAbsenceRate * mskRate * niMultiplier * employersPensionContribution;
   const savings = annualMSKCost * reductionRate;
 
   // Update the results in the HTML
   document.getElementById('totalCost').querySelector('span').textContent = formatCurrency(annualMSKCost);
   document.getElementById('savings').querySelector('span').textContent = formatCurrency(savings);
 
-  document.getElementById('costPerEmployee-info').textContent = formatCurrency(costPerEmployee);
-  document.getElementById('absenceReducedBy-info').textContent = absenceReducedBy.toFixed(2) + '%';
+
 }
 
 // Function to format numbers as currency for calculations total
@@ -31,35 +31,39 @@ function formatCurrency(value) {
   return value.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' }).replace('£', '');
 }
 
-function showTooltip(element, text, link) {
-  // Remove existing tooltip to avoid duplicates
+// Get the tooltip content
+function showTooltip(element, text) {
   if (element._tooltip) {
     document.body.removeChild(element._tooltip);
     element._tooltip = null;
   }
-
-  // Create tooltip container
+  
   const tooltip = document.createElement('div');
   tooltip.className = 'tooltip';
-  tooltip.innerHTML = link
-    ? `<p>${text}</p><a href="${link}" target="_blank">More Info</a>`
-    : `<p>${text}</p>`;
-
-  // Append tooltip to the body
+  
+  // Parse multiline tooltips
+  const tooltipLines = text.split('\n').map(line => {
+    const [description, url] = line.split('|').map(item => item.trim());
+    return url
+      ? `<li><a href="${url}" target="_blank">${description}</a></li>`
+      : `<li>${description}</li>`;
+  }).join('');
+  
+  tooltip.innerHTML = `
+    <ul>${tooltipLines}</ul>
+  `;
+  
   document.body.appendChild(tooltip);
-
-  // Position tooltip
+  
   const rect = element.getBoundingClientRect();
   tooltip.style.left = `${rect.left + window.scrollX}px`;
   tooltip.style.top = `${rect.bottom + window.scrollY}px`;
-
-  // Store tooltip reference
+  
   element._tooltip = tooltip;
-
-  // Add fade-in effect
+  
   setTimeout(() => tooltip.classList.add('show'), 10);
-
-  // Keep tooltip visible on hover
+  
+    // Keep tooltip visible on hover
   tooltip.addEventListener('mouseover', () => {
     clearTimeout(element._hideTimeout); // Cancel hiding
   });
@@ -70,7 +74,7 @@ function showTooltip(element, text, link) {
 
   element.addEventListener('mouseover', () => {
     clearTimeout(element._hideTimeout); // Keep tooltip visible when hovering back over the icon
-  });
+  }); 
 }
 
 function hideTooltip(element) {
@@ -90,6 +94,7 @@ document.querySelectorAll('.info-icon').forEach((icon) => {
   const text = icon.getAttribute('data-tooltip');
   const link = icon.getAttribute('data-tooltip-link');
 
+
   icon.addEventListener('mouseover', () => showTooltip(icon, text, link));
   icon.addEventListener('mouseout', (event) => {
     const related = event.relatedTarget;
@@ -99,3 +104,4 @@ document.querySelectorAll('.info-icon').forEach((icon) => {
     hideTooltip(icon);
   });
 });
+
