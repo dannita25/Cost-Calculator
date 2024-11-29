@@ -103,5 +103,5 @@ document.querySelectorAll('.info-icon').forEach((icon) => {
     }
     hideTooltip(icon);
   });
-});
+})
 
