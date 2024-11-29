@@ -47,9 +47,29 @@ h3, h2 {
 
 #calculation-basis {
   background-color: #f9f9f9;
-  padding: 40px 10px; /* Top and bottom: 20px; Left and right: 10px */
+  padding: 10px 10px; /*Top and bottom: 20px; Left and right: 10px */
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+#calculation-basis h4 {
+  margin-top: 20px;
+}
+
+#calculation-basis ul {
+  margin-top: 5px; /* Add spacing above the list */
+  padding-left: 20px; /* Indent bullets correctly */
+  list-style-type: disc; /* Default bullet style */
+}
+
+#calculation-basis a {
+  color: #ff7300; /* Match link color */
+  text-decoration: none; /* Remove underline */
+}
+
+#calculation-basis a:hover {
+  color: #da6404; /* Slightly darker hover color */
+  text-decoration: underline; /* Add underline on hover */
 }
 
 label {
@@ -94,16 +114,6 @@ button:hover {
   margin-bottom: 10px;
 }
 
-#admin-info h3 {
-  font-size: 1.1em;
-  margin-bottom: 10px;
-}
-
-#admin-info p {
-  font-size: 0.9em;
-  margin-bottom: 5px;
-}
-
 
 /* Tooltip styling */
 .tooltip {
@@ -121,7 +131,7 @@ button:hover {
   opacity: 0; /* Hidden initially */
   visibility: hidden; /* Hidden from view */
   pointer-events: none; 
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
   top: 100%; /* Place it directly below the icon */
   left: 50%; /* Align horizontally with the center of the icon */
   transform: translateX(-50%) translateY(5px); /* Center horizontally and add slight spacing */
@@ -136,8 +146,21 @@ button:hover {
   transform: translateY(0); /* Move into place */
 }
 
+.tooltip a {
+  color: #444498; /* Desired color for unvisited links */
+  text-decoration: none; /* Removes underline */
+}
+
+.tooltip a:visited {
+  color: #444498; /* Keep the same color for visited links */
+}
+
+.tooltip a:hover {
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
 .info-icon {
-  color: #143756; 
+  color: #065091; 
   cursor: pointer; /* Show pointer cursor for interactivity */
   font-size: 1em; 
   display: inline-block; 
@@ -145,11 +168,9 @@ button:hover {
 }
 
 .info-icon:hover {
-  color: #495057; 
+  color: #0d1f31; 
 }
 
 .info-icon i {
   font-size: inherit; 
 }
-
-
