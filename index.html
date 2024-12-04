@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MSK Cost Calculator</title>
+  <title>Musculoskeletal (MSK) Cost Calculator</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
@@ -23,83 +23,103 @@
         <button onclick="calculateCost()">Calculate</button>
 
         <div id="result">
-          <h3>Estimated Cost Impact:</h3>
+          <h3>Estimated Cost Impact</h3>
           <p id="totalCost">Annual cost on MSK conditions: £<span>0</span></p>
-          <p id="savings">Potential savings: £<span>0</span></p>
+          <p id="savings">Potential savings: £<span>0</span></p></br>
+          <p id="formula">Company cost of Absenteeism = the Number of employees x Average salary x Absence rate. The cost of MSK absence is 21% of the above sum + NI and pension contributions.</p>
         </div>
 
       </div>
 
       <div id="calculation-basis">     
-          <h3>Calculation Basis:</h3>
-          <p>
-            Average Salary: <span id="salary-info">£34,963</span>
-            <span class="info-icon" 
-                  role="tooltip" 
-                  data-tooltip="Median annual earnings for full-time employees was £34,963 for the tax year ending on 5 April 2023:
-                  More info | https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/annualsurveyofhoursandearnings/2023">
-                  <i class="fas fa-info-circle"></i>
+          <h3>Calculation Basis</h3>
+
+          <p class="row">
+            <span class="label">Average Salary:</span>
+            <span class="value">
+              <span id="salary-info">£34,963</span>
+              <span class="info-icon" 
+                    role="tooltip" 
+                    data-tooltip="Median annual earnings for full-time employees was £34,963 for the tax year ending on 5 April 2023:
+                    More info | https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/annualsurveyofhoursandearnings/2023">
+                <i class="fas fa-info-circle"></i>
+              </span>
             </span>
           </p>
-          <p>
-            Average Absence Rate: <span id="absenceRate-info">2.6%</span>
-            <span class="info-icon" 
+
+          <p class="row">
+            <span class="label">Average Absence Rate: </span>
+            <span class="value">
+              <span id="absenceRate-info">2.6%</span>
+              <span class="info-icon" 
                   role="tooltip" 
                   data-tooltip="The sickness absence rate - the percentage of working hours lost because of sickness or injury rose to 2.6% in 2022.
                   More info | https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/articles/sicknessabsenceinthelabourmarket/2022">
                   <i class="fas fa-info-circle"></i>
+              </span>
             </span>
           </p>
-          <p>
-            Working Days Lost due to MSK: <span id="mskRate-info">21%</span>
-            <span class="info-icon" 
-                  role="tooltip" 
-                  data-tooltip="In 2022/23, musculoskeletal disorders accounted for 27% of all work-related ill health cases and 21% of all working days lost due to work-related ill health.
-                  More info | https://www.hse.gov.uk/statistics/assets/docs/msd.pdf">
-                  <i class="fas fa-info-circle"></i>
+
+          <p class="row">
+            <span class="label">Working Days Lost due to MSK: </span>
+            <span class="value">
+              <span id="mskRate-info">21%</span>
+              <span class="info-icon" 
+                    role="tooltip" 
+                    data-tooltip="In 2022/23, MSK disorders accounted for 27% of all work-related ill health cases and 21% of all working days lost due to work-related ill health.
+                    More info | https://www.hse.gov.uk/statistics/assets/docs/msd.pdf">
+                    <i class="fas fa-info-circle"></i>
+              </span>
             </span>
           </p>
-          <p>
-            Cost per Employee: <span id="costPerEmployee-info">£226</span>
-            <span class="info-icon" 
-                  role="tooltip"
-                  data-tooltip="In addition to the cost of wages:
-                  3% Minimum employer contribution | https://www.thepensionsregulator.gov.uk/en/employers/new-employers/im-an-employer-who-has-to-provide-a-pension/choose-a-pension-scheme/understanding-your-costs/making-contributions-to-your-pension-scheme-?gad_source=1&gclid=CjwKCAjwnei0BhB-EiwAA2xuBtCjcDDOAN4ZywqYsJ4xrTove1K-s4XjYSh0hf2lF793qP85ooxGdRoCtCMQAvD_BwE&gclsrc=aw.ds
-                  15% Employer NI | https://zelt.app/blog/how-to-calculate-employers-ni-employer-s-ni-calculator-2024-2025-2026/#:~:text=It%20depends%20on%20the%20National,week%20or%20%C2%A3758%2Fmonth.">
-                  <i class="fas fa-info-circle"></i>
+
+          <p class="row">
+            <span class="label">Cost per Employee: </span>
+            <span class="value">
+              <span id="costPerEmployee-info">£226</span>
+              <span class="info-icon" 
+                    role="tooltip"
+                    data-tooltip="In addition to the cost of wages:
+                    3% Minimum employer contribution | https://www.thepensionsregulator.gov.uk/en/employers/new-employers/im-an-employer-who-has-to-provide-a-pension/choose-a-pension-scheme/understanding-your-costs/making-contributions-to-your-pension-scheme-?gad_source=1&gclid=CjwKCAjwnei0BhB-EiwAA2xuBtCjcDDOAN4ZywqYsJ4xrTove1K-s4XjYSh0hf2lF793qP85ooxGdRoCtCMQAvD_BwE&gclsrc=aw.ds
+                    15% Employer NI | https://zelt.app/blog/how-to-calculate-employers-ni-employer-s-ni-calculator-2024-2025-2026/#:~:text=It%20depends%20on%20the%20National,week%20or%20%C2%A3758%2Fmonth.">
+                    <i class="fas fa-info-circle"></i>
+              </span>
             </span>
           </p>
-          <p>
-            Absence Reduced by: <span id="absenceReducedBy-info">20%</span>
-            <span class="info-icon" 
-                  role="tooltip" 
-                  data-tooltip="The evidence supporting early management of MSK conditions is overwhelming:
-                  Best MSK practice is initial diagnosis based on a triage process | https://www.researchgate.net/publication/260843454_Acute_low_back_pain_Beyond_drug_therapies
-                  Case study: Rapid access to physio reducing MSK sickness absence | https://www.ewin.nhs.uk/sites/default/files/eWIN%20Case%20Study%20-%20Rapid%20Access%20Physiotherapy%20Reducing%20Musculoskeletal%20Sickness%20Absence%20749.pdf
-                  Early Intervention Reducing Long-Term Sick Leave | https://journals.lww.com/spinejournal/Abstract/2003/10150/Does_Early_Intervention_With_a_Light_Mobilization.2.aspx
-                  Early physical therapy on utilization and costs | https://pubmed.ncbi.nlm.nih.gov/25880898/
-                  Early physical therapy associated with reduced risk | https://pubmed.ncbi.nlm.nih.gov/22614792/
-                  NHS Guidelines on prevention and management of sickness absence | https://www.nhsemployers.org/publications/promoting-health-and-wellbeing-and-attendance-work#support-for-managing-sickness-absence
-                  Physio Med Saves NHS Trust Hundreds of Working Days | https://www.physiomed.co.uk/case-studies/physio-med-saves-nhs-trust-hundreds-of-working-days">
-                  <i class="fas fa-info-circle"></i>
-            </span> 
-          </p>
-          <!-- Additional Costs Section -->
-          <p class="additional-costs">
-            <h4>Additional costs excluded from this calculation:</h4>
-            <ul>
-              <li>Manager time – <a href="https://www.employment-studies.co.uk/system/files/resources/files/382.pdf" target="_blank">up to 5.7% of a business's total salary costs</a></li>
-              <li>Administrative tasks (Line Managers, HR, Finance)</li>
-              <li>Covering absences with costly or untrained staff</li>
-              <li>The productivity gap and presenteeism</li>
-              <li>Stress and low morale</li>
-              <li>Prolonged or recurring absenteeism</li>
-              <li>Mental health impact – stress, anxiety, and depression</li>
-              <li>Employee disengagement</li>
-            </ul>
-          </p>
-      </div>      
-    </div>  
+
+          <p class="row">
+            <span class="label">MSK Absence Cost Reduction: </span>
+            <span class="value">
+              <span id="absenceReducedBy-info">20%</span>
+              <span class="info-icon" 
+                    role="tooltip" 
+                    data-tooltip="The evidence supporting early management of MSK conditions is overwhelming:
+                    Best MSK practice is initial diagnosis based on a triage process | https://www.researchgate.net/publication/260843454_Acute_low_back_pain_Beyond_drug_therapies
+                    Case study: Rapid access to physio reducing MSK sickness absence | https://www.ewin.nhs.uk/sites/default/files/eWIN%20Case%20Study%20-%20Rapid%20Access%20Physiotherapy%20Reducing%20Musculoskeletal%20Sickness%20Absence%20749.pdf
+                    Early Intervention Reducing Long-Term Sick Leave | https://journals.lww.com/spinejournal/Abstract/2003/10150/Does_Early_Intervention_With_a_Light_Mobilization.2.aspx
+                    Early physical therapy on utilization and costs | https://pubmed.ncbi.nlm.nih.gov/25880898/
+                    Early physical therapy associated with reduced risk | https://pubmed.ncbi.nlm.nih.gov/22614792/
+                    NHS Guidelines on prevention and management of sickness absence | https://www.nhsemployers.org/publications/promoting-health-and-wellbeing-and-attendance-work#support-for-managing-sickness-absence
+                    Physio Med Saves NHS Trust Hundreds of Working Days | https://www.physiomed.co.uk/case-studies/physio-med-saves-nhs-trust-hundreds-of-working-days">
+                    <i class="fas fa-info-circle"></i>
+              </span> 
+            </span>
+          </p>  
+
+          <!-- Additional Costs Section (Nested Container) -->
+        <div id="additional-costs-container">
+          <h4>Additional costs excluded from this calculations</h4>
+          <ul>
+            <li>Manager time – <a href="https://www.employment-studies.co.uk/system/files/resources/files/382.pdf" target="_blank">up to 5.7% of a business's total salary costs</a></li>
+            <li>Administrative tasks (Line Managers, HR, Finance)</li>
+            <li>Covering absences with costly or untrained staff</li>
+            <li>The productivity gap and presenteeism</li>
+            <li>Stress and low morale</li>
+            <li>Prolonged or recurring absenteeism</li>
+            <li>Mental health impact – stress, anxiety, and depression</li>
+            <li>Employee disengagement</li>
+          </ul>
+        </div>
   </div>
   <script src="script.js"></script>
 </body>
