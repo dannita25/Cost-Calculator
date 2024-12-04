@@ -1,16 +1,16 @@
 // Predefined values for calculation (adaptable by admin staff)
-let averageSalary = 34963; 
-let averageAbsenceRate = 2.6 / 100; 
-let mskRate = 21 / 100; 
+let averageSalary = 34963; //***
+let averageAbsenceRate = 2.6 / 100; //***
+let mskRate = 21 / 100; //*** 
 let reductionRate = 20 / 100; 
-let niMultiplier = 1.15; // Updated NI multiplier
-let employersPensionContribution = 1.03;
+let niMultiplier = 1.138; // Updated NI multiplier ***
+let employersPensionContribution = 1.03;//***
 
 function calculateCost() {
   const employees = parseFloat(document.getElementById('employees').value);
 
   // Basic validation
-  if (isNaN(employees)) {
+  if (isNaN(employees)) { //***
     alert("Please enter a valid number of employees.");
     return;
   }
@@ -104,4 +104,5 @@ document.querySelectorAll('.info-icon').forEach((icon) => {
     hideTooltip(icon);
   });
 })
+
 
