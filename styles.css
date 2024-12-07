@@ -1,3 +1,4 @@
+/* General reset an typography */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,10 +14,11 @@ body {
   background-color: #f4f4f9;
 }
 
+/* Calculator container */
 .calculator-container {
   background: white;
   padding: 20px;
-  width: 100%; /* Make it responsive */
+  width: 100%; /* Makes it responsive */
   max-width: 800px; /* Limit max width for larger screens */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -28,6 +30,7 @@ body {
   font-size: 1.7em;
 }
 
+/* Calculator content */
 .calculator-content {
   display: flex;
   flex-wrap: wrap; /* Allow wrapping for smaller screens */
@@ -35,11 +38,13 @@ body {
   margin-top: 20px;
 }
 
+/* Headings */ 
 h3, h2 {
   margin-bottom: 7px;
   font-size: 1.3em;
 }
 
+/* Sections for Calculation and Basis */
 #calculation-part, #calculation-basis {
   flex: 1; /* Take equal space */
   min-width: 300px; /* Prevent collapsing on small screens */
@@ -47,23 +52,46 @@ h3, h2 {
 
 #calculation-basis {
   background-color: #f9f9f9;
-  padding: 10px 10px; /*Top and bottom: 20px; Left and right: 10px */
+  padding: 10px 10px; /* Top and bottom: 20px; Left and right: 10px */
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.row {
-  display: flex; /* Align elements in a row */
-  justify-content: space-between; /* Space between left and right sections */
-  align-items: center; /* Align items vertically in the center */
+/* Results Section */
+#calculation-part #result p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#calculation-part #result p .right-align {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#calculation-part #result {
+  text-align: left;
+  flex: 1;
+}
+
+/* Result Section */
+#result {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#result h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 label {
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
-  text-align: left; /* Align labels to the left NEEEEEEEEEEEEW*/
-  flex: 1; /* Allows the label to take up space proportionately NEEEEEEEEEEEEW*/
+  text-align: left; /* Align labels to the left */
+  flex: 1; /* Allows the label to take up space proportionately */
 }
 
 input[type="number"] {
@@ -91,18 +119,14 @@ button:hover {
   background-color: #e06600;
 }
 
-/* Result Section */
-#result {
-  margin-top: 20px;
-  text-align: left;
+/* Layout and Alignment */
+.row {
+  display: flex; /* Align elements in a row */
+  justify-content: space-between; /* Space between left and right sections */
+  align-items: center; /* Align items vertically in the center */
 }
 
-#result h2 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-/* Tooltip styling */
+/* Tooltip and Info Icon Styling */
 .tooltip {
   position: absolute;
   background-color: #b0abab; 
@@ -133,6 +157,16 @@ button:hover {
   transform: translateY(0); /* Move into place */
 }
 
+.tooltip ul {
+  list-style: none; /* Removes bullets */
+  margin: 0;
+  padding: 0;
+}
+
+.tooltip li {
+  margin-bottom: 5px; /* Optional: Add spacing between lines */
+}
+
 .tooltip a {
   color: #444498; /* Desired color for unvisited links */
   text-decoration: none; /* Removes underline */
@@ -146,14 +180,50 @@ button:hover {
   text-decoration: underline; /* Optional: underline on hover */
 }
 
-.tooltip ul {
-  list-style: none; /* Removes bullets */
-  margin: 0;
-  padding: 0;
+#calculation-basis #additional-costs-container {
+  margin-top: 20px; /* Add spacing from the main calculation section */
+  background-color: #f9f9f9; /* Slightly different background to distinguish */
 }
 
-.tooltip li {
-  margin-bottom: 5px; /* Optional: Add spacing between lines */
+#calculation-basis #additional-costs-container h4 {
+  font-size: 0.80em; /* Adjust the header size */
+  margin-bottom: 3px; /* Space below the header */
+}
+
+#calculation-basis #additional-costs-container ul {
+  padding-left: 20px; /* Indent bullet points */
+  margin: 0; /* Remove default spacing */
+}
+
+#calculation-basis #additional-costs-container li {
+  font-size: 0.75em; /* Smaller font size for list items */
+  line-height: 0.95; /* Adjust line height for readability */
+  margin-bottom: 5px; /* Space between each list item */
+}
+
+#calculation-basis #additional-costs-container a {
+  font-size: 0.9em; /* Match link font size */
+  color: #ff7300; /* Optional: Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+#calculation-basis #additional-costs-container a:hover {
+  color: #da6404; /* Slightly darker hover color */
+  text-decoration: underline; /* Optional: Add underline on hover */
+}
+
+/* Info icon styling */
+#calculation-part #result .info-icon {
+  cursor: pointer;
+  color: #065091;
+}
+
+#calculation-part #result .info-icon:hover {
+  color: #0d1f31;
+}
+
+#calculation-part #result .info-icon i {
+  font-size: inherit; 
 }
 
 .info-icon {
@@ -173,34 +243,4 @@ button:hover {
   font-size: inherit; 
 }
 
-#calculation-basis #additional-costs-container {
-  margin-top: 20px; /* Add spacing from the main calculation section */
-  background-color: #f9f9f9; /* Slightly different background to distinguish */
-}
 
-#calculation-basis #additional-costs-container h4 {
-  font-size: 0.96em; /* Adjust the header size */
-  margin-bottom: 3px; /* Space below the header */
-}
-
-#calculation-basis #additional-costs-container ul {
-  padding-left: 20px; /* Indent bullet points */
-  margin: 0; /* Remove default spacing */
-}
-
-#calculation-basis #additional-costs-container li {
-  font-size: 0.9em; /* Smaller font size for list items */
-  line-height: 0.95; /* Adjust line height for readability */
-  margin-bottom: 5px; /* Space between each list item */
-}
-
-#calculation-basis #additional-costs-container a {
-  font-size: 0.9em; /* Match link font size */
-  color: #ff7300; /* Optional: Link color */
-  text-decoration: none; /* Remove underline */
-}
-
-#calculation-basis #additional-costs-container a:hover {
-  color: #da6404; /* Slightly darker hover color */
-  text-decoration: underline; /* Optional: Add underline on hover */
-}
