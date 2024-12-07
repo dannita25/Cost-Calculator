@@ -1,39 +1,61 @@
 <!DOCTYPE html>  
 <html lang="en">
 <head>
+  <!-- Metadata -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Musculoskeletal (MSK) Cost Calculator</title>
+
+  <!-- External CSS and Icons -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Main Calculator Container -->
   <div class="calculator-container">
     <h1>Musculoskeletal (MSK) Cost Calculator</h1>
     <div class="calculator-content">
 
+      <!-- Input Section -->
       <div id="calculation-part">
         <label for="employees"></label>
-
         <p class="info-text">Enter the total number of employees in your organization:</p></br>
-
-        <input type="number" 
-              id="employees" 
-              placeholder="e.g., 500">
+        <input type="number" id="employees" placeholder="e.g., 500">
         <button onclick="calculateCost()">Calculate</button>
 
+        <!-- Results Section -->
         <div id="result">
           <h3>Estimated Cost Impact</h3>
-          <p id="totalCost">Annual cost off MSK conditions: £<span>0</span></p>
-          <p id="savings">Potential savings: £<span>0</span></p></br>
-          <p id="formula">Company cost of Absenteeism = the Number of employees x Average salary x Absence rate. The cost of MSK absence is 21% of the above sum + NI and pension contributions.</p>
-        </div>
 
+          <!-- Annual Cost Result -->
+          <p id="totalCost">
+           <strong>Annual cost of MSK conditions:</strong>
+            <span class="right-align">
+              £<span id="totalCost-value">0</span>
+              <!-- Info Icon with Tooltip -->
+              <span class="info-icon" 
+                    role="tooltip" 
+                    data-tooltip="Company cost of Absenteeism = the Number of employees x Average salary x Absence rate. The cost of MSK absence is 21% of the above sum + NI and pension contributions.">
+                <i class="fas fa-info-circle"></i>
+              </span>
+            </span>
+          </p>
+
+          <!-- Potential Savings Result -->
+          <p id="savings">
+            <strong>Potential savings:</strong>
+            <span class="right-align">
+              £<span id="savings-value">0</span>
+            </span>
+          </p>
+        </div>
       </div>
 
+      <!-- Calculation Basis Section -->
       <div id="calculation-basis">     
           <h3>Calculation Basis</h3>
 
+          <!-- Average Salary -->
           <p class="row">
             <span class="label">Average Salary:</span>
             <span class="value">
@@ -47,6 +69,7 @@
             </span>
           </p>
 
+          <!-- Average Absence Rate -->
           <p class="row">
             <span class="label">Average Absence Rate: </span>
             <span class="value">
@@ -60,6 +83,7 @@
             </span>
           </p>
 
+          <!-- Working Days Lost -->
           <p class="row">
             <span class="label">Working Days Lost due to MSK: </span>
             <span class="value">
@@ -73,6 +97,7 @@
             </span>
           </p>
 
+          <!-- Cost Per Employee -->
           <p class="row">
             <span class="label">Cost per Employee: </span>
             <span class="value">
@@ -87,6 +112,7 @@
             </span>
           </p>
 
+          <!-- MSK Absence Cost Reduction -->
           <p class="row">
             <span class="label">MSK Absence Cost Reduction: </span>
             <span class="value">
@@ -106,7 +132,7 @@
             </span>
           </p>  
 
-          <!-- Additional Costs Section (Nested Container) -->
+          <!-- Additional Costs Section -->
         <div id="additional-costs-container">
           <h4>Additional costs excluded from this calculations</h4>
           <ul>
@@ -121,6 +147,7 @@
           </ul>
         </div>
   </div>
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
